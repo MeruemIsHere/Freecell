@@ -1,0 +1,52 @@
+.gameboard-container {
+  width: 80%;
+  height: 90%;
+  background-color: #2f9e2f;
+  border: 3px solid darkgreen;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: max-content 1fr;
+      grid-template-rows: -webkit-max-content 1fr;
+      grid-template-rows: max-content 1fr;
+      grid-template-areas: "bonus win" "board board";
+  gap: 50px;
+}
+
+.bonuscells-container,
+.wincells-container,
+.boardcells-container {
+  padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+}
+
+.bonuscells-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: bonus;
+}
+
+.wincells-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: win;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.boardcells-container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: board;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=GameBoard.css.map */

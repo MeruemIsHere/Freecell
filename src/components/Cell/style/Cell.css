@@ -1,0 +1,15 @@
+.cell-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.cell-mark {
+  width: 120px;
+  height: 170px;
+  border: 2px solid darkgreen;
+}
+/*# sourceMappingURL=Cell.css.map */
