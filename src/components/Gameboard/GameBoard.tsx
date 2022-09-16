@@ -1,8 +1,11 @@
 import Cell from '../Cell'
 import './style/GameBoard.css'
+import cards from '../../Data/cards.json'
+import Card from './../Card/Card';
 
 function GameBoard() {
-  return (
+    
+    return (
     <div className="gameboard-container">
         <div className="bonuscells-container">
             <Cell/>
@@ -29,7 +32,7 @@ function GameBoard() {
             <Cell/>
         </div>
     </div>
-  )
+    )
 }
 
 export default GameBoard
