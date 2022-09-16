@@ -7,15 +7,15 @@ function Card({card}) {
   return (
     <div className='card' style={{width: CARD_SIZE.width, height: CARD_SIZE.height, color: displayColor(card.symbole)}}>
       <div className="top">
-        {card.value}
+        {card.designation}
         {card.symbole}
       </div>
       <div className="content">
-        {card.value}
+        {card.designation}
         {card.symbole}
       </div>
       <div className="bottom">
-        {card.value}
+        {card.designation}
         {card.symbole}
       </div>
     </div>
