@@ -1,35 +1,34 @@
-import Cell from '../Cell'
+import { BonusCell, WinCell, BoardCell } from '../Cell'
 import './style/GameBoard.css'
 import cards from '../../Data/cards.json'
-import Card from './../Card/Card';
 
 function GameBoard() {
-    
+            
     return (
     <div className="gameboard-container">
         <div className="bonuscells-container">
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
+            <BonusCell/>
+            <BonusCell/>
+            <BonusCell/>
+            <BonusCell/>
         </div>
 
         <div className="wincells-container">
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
+            <WinCell/>
+            <WinCell/>
+            <WinCell/>
+            <WinCell/>
         </div>
 
         <div className="boardcells-container">
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
+            <BoardCell/>
         </div>
     </div>
     )

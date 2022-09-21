@@ -1,8 +1,14 @@
 .cell-container {
     width: max-content;
     height: max-content;
+    position: relative;
 }
 
 .cell-mark {
     border: 2px solid darkgreen;
+}
+
+.cards-container {
+    position: absolute;
+    top: 0;
 }
