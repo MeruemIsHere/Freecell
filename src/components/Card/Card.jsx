@@ -5,7 +5,7 @@ import useCard from './useCard.hooks';
 
 
 
-function Card({index = 0, position = '', card}) {
+function Card({index = 0, position, card}) {
   const { topPos } = useCard(position, index)
 
   return (

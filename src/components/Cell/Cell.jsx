@@ -1,90 +1,29 @@
 import './style/Cell.css'
 import { CARD_SIZE } from '../../globalConstant';
-import cards from '../../Data/cards.json'
 import Card from '../Card';
-import { useState } from 'react';
 
 
-const Cell = ({children}) => {
+const Cell = ({type, cards}) => {
+  const cardsNotEmpty = cards?.length > 0
 
   return (
     <div className="cell-container">
         <div className="cell-mark"  style={{width: CARD_SIZE.width, height: CARD_SIZE.height}}></div>
         <div className={`cards-container`}>
-          {children}
+          {cardsNotEmpty && cards.map(
+            (card, index) => 
+              <Card 
+                key={index} 
+                index={index}
+                position={type}
+                card={card}
+              />
+            )
+          }
         </div>
     </div>
   )
 }
-
-
-
-
-
-export const BonusCell = () => {
-
-  const [bonusCard, setBonusCard] = useState(null)
-
-  return (
-    <Cell>
-      {bonusCard && <Card card={bonusCard}/>}
-    </Cell>
-  )
-}
-
-
-
-
-
-export const WinCell = () => {
-
-  const [winCards, setWinCards] = useState([
-    cards[0],
-    cards[1]
-  ])
-
-  return (
-    <Cell>
-      {winCards && winCards.map(
-        (winCard, index) => 
-          <Card 
-            key={index} 
-            index={index}
-            card={winCard}
-          />
-        )
-      }
-    </Cell>
-  )
-}
-
-
-
-
-
-export const BoardCell = () => {
-
-  const [boardCards, setBoardCards] = useState([
-    cards[0],
-    cards[1]
-  ])
-
-  return (
-    <Cell>
-      {boardCards && boardCards.map(
-        (boardCard, index) => 
-          <Card 
-            key={index} 
-            index={index}
-            position='boardcell'
-            card={boardCard}
-          />
-        )
-      }
-    </Cell>
-  )
-}
-
 
 
 
