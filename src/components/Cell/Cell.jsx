@@ -64,20 +64,20 @@ export const WinCell = () => {
 
 export const BoardCell = () => {
 
-  const [winCards, setWinCards] = useState([
+  const [boardCards, setBoardCards] = useState([
     cards[0],
     cards[1]
   ])
 
   return (
     <Cell>
-      {winCards && winCards.map(
-        (winCard, index) => 
+      {boardCards && boardCards.map(
+        (boardCard, index) => 
           <Card 
             key={index} 
             index={index}
             position='boardcell'
-            card={winCard}
+            card={boardCard}
           />
         )
       }
