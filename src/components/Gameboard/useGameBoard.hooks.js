@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { shuffleCards } from './../../utils/utils';
+import { starterDistribution } from './Gameboard.helpers';
 
 export function useDeck() {
-    const [deck, setDeck] = useState(shuffleCards())
+    const [deck, setDeck] = useState(starterDistribution())
 
     return { deck }
 }
