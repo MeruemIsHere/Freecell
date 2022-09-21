@@ -1,8 +1,12 @@
 import { BonusCell, WinCell, BoardCell } from '../Cell'
 import './style/GameBoard.css'
-import cards from '../../Data/cards.json'
+import { useDeck } from './useGameBoard.hooks';
 
-function GameBoard() {
+export const GameBoard = () => {
+
+    const {deck} = useDeck()
+    console.log(deck);
+    
             
     return (
     <div className="gameboard-container">
