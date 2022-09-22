@@ -5,17 +5,11 @@ import useCard from './useCard.hooks';
 
 
 
-function Card({index = 0, position, card}) {
-  const { topPos } = useCard(position, index)
+function Card({index = 0, typeCell, card}) {
+  const { cardStyle } = useCard(typeCell, index, card)
 
   return (
-    <div className='card' 
-         style={{
-            width: CARD_SIZE.width, 
-            height: CARD_SIZE.height, 
-            color: displayColor(card.symbole),
-            top: `${topPos}px`
-         }}>
+    <div className='card' style={cardStyle}>
 
       <div className="top">
         {card.designation}

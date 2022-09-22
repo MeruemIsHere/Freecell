@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react';
+import { CARD_SIZE } from './../../globalConstant';
+import { defineColor, defineTopPos } from './Card.helpers';
 
-const GAP = 30
 
+export default function useCard(typeCell, index, card) {
 
-export default function useCard(position, index) {
-
-    const [topPos, setTopPos] = useState(0)
+    const [cardStyle, setCardStyle] = useState({
+        width: CARD_SIZE.width,
+        height: CARD_SIZE.height,
+        color: defineColor(card.symbole)
+    })
 
     useEffect(() => {
-        if (position === 'boardcell') {
-            let defineTopPos = index * GAP
-            setTopPos(defineTopPos)
-        }
-    }, [position, index])
+
+        defineTopPos(typeCell, index, setCardStyle)
+
+    }, [typeCell, index])
 
 
-    return { topPos }
+    return { cardStyle }
 }

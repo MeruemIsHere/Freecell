@@ -20,7 +20,7 @@ const Cell = ({type, cards, indexCell}) => {
               <Card 
                 key={index} 
                 index={index}
-                position={type}
+                typeCell={type}
                 card={card}
               />
             )
