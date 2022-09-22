@@ -9,23 +9,25 @@ export const GameBoard = () => {
             
     return (
     <div className="gameboard-container">
+
         <div className="bonuscells-container">
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
+            {deck.bonusCells.map((cards, index) => (
+                <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index}/>
+            ))}
         </div>
 
         <div className="wincells-container">
-            <Cell/>
-            <Cell/>
-            <Cell/>
-            <Cell/>
+            {deck.winCells.map((cards, index) => (
+                <Cell key={index} type={'wincell'} cards={cards} indexCell={index}/>
+            ))}
         </div>
 
         <div className="boardcells-container">
-            {deck.map((cards, index) => <Cell key={index} type={'boardcell'} cards={cards}/>)}
+            {deck.boardCells.map((cards, index) => (
+                <Cell key={index} type={'boardcell'} cards={cards} indexCell={index}/>
+            ))}
         </div>
+
     </div>
     )
 }

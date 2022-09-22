@@ -10,6 +10,20 @@
 
 .cell-mark {
   border: 2px solid darkgreen;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cell-mark .symbole-mark {
+  color: darkgreen;
+  font-size: 48px;
 }
 
 .cards-container {

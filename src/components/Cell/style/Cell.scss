@@ -6,6 +6,13 @@
 
 .cell-mark {
     border: 2px solid darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .symbole-mark {
+        color: darkgreen;
+        font-size: 48px;
+    }
 }
 
 .cards-container {
