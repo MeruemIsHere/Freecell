@@ -8,12 +8,14 @@ export default function useCard(typeCell, index, card) {
     const [cardStyle, setCardStyle] = useState({
         width: CARD_SIZE.width,
         height: CARD_SIZE.height,
-        color: defineColor(card.symbole)
+        color: defineColor(card.symbole),
     })
 
     useEffect(() => {
 
-        defineTopPos(typeCell, index, setCardStyle)
+        if (typeCell === 'boardcell') {
+            defineTopPos(index, setCardStyle)
+        }
 
     }, [typeCell, index])
 

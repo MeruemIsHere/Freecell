@@ -1,7 +1,47 @@
 import { shuffleCards } from '../../utils/utils';
 
+
+
+function attributeValues(cards) {
+
+    cards.forEach(card => {
+        const { designation } = card
+
+        switch (designation) {
+
+            case 'A':
+                card.value = 1
+                break
+
+            case 'J':
+                card.value = 11
+                break
+
+            case 'Q':
+                card.value = 12
+                break
+
+            case 'K':
+                card.value = 13
+                break
+
+            default:
+                card.value = designation
+                break
+
+        }
+    })
+
+    return cards
+}
+
+
+
+
+
 export const starterDistribution = () => {
-    const cardsShuffled = shuffleCards()
+    let cardsShuffled = attributeValues(shuffleCards())
+
     let starterDeck = []
 
     for (let i = 0; i < 8; i++) {

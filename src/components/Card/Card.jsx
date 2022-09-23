@@ -1,15 +1,14 @@
 import './style/card.css'
-import { CARD_SIZE } from '../../globalConstant'
-import { displayColor } from './Card.helpers';
 import useCard from './useCard.hooks';
 
 
 
-function Card({index = 0, typeCell, card}) {
+function Card({index = 0, typeCell, card, handleClickCard}) {
+  
   const { cardStyle } = useCard(typeCell, index, card)
 
   return (
-    <div className='card' style={cardStyle}>
+    <div className='card' style={cardStyle} onClick={() => handleClickCard({index, card, typeCell})}>
 
       <div className="top">
         {card.designation}

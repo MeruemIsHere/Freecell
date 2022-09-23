@@ -10,13 +10,22 @@ import { starterDistribution } from './Gameboard.helpers';
 export function useDeck() {
     const [deck, setDeck] = useState({
         bonusCells: [
-            [],
+            [{
+                "designation": 7,
+                "symbole": "♣️"
+            }],
             [],
             [],
             []
         ],
         winCells: [
-            [],
+            [{
+                "designation": 7,
+                "symbole": "♣️"
+            }, {
+                "designation": 8,
+                "symbole": "♣️"
+            }],
             [],
             [],
             []

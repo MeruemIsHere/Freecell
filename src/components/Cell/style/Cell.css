@@ -9,6 +9,8 @@
 }
 
 .cell-mark {
+  position: relative;
+  top: 0px;
   border: 2px solid darkgreen;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,6 +30,20 @@
 
 .cards-container {
   position: absolute;
-  top: 0;
+  top: 0px;
+  width: 100%;
+  min-height: 100%;
+}
+
+.cards-container .selection-marker {
+  position: absolute;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  border-radius: 10px;
+  width: 100%;
+  bottom: 0px;
+  border: 5px solid crimson;
+  z-index: 1;
+  pointer-events: none;
 }
 /*# sourceMappingURL=Cell.css.map */
