@@ -1,14 +1,24 @@
 import './style/card.css'
 import useCard from './useCard.hooks';
+import { ShiftingCardsContext } from './../../context/GlobalContext/ShiftingCardsContext/ShiftingCardsContext';
+import { useContext } from 'react';
 
 
 
-function Card({index = 0, typeCell, card, handleClickCard}) {
+function Card({index = 0, card, typeCell, indexCell}) {
   
   const { cardStyle } = useCard(typeCell, index, card)
+  const { handleClickCard } = useContext(ShiftingCardsContext)
+
+  const dataForSelection = {
+    indexCard: index, 
+    card,
+    typeCell,
+    indexCell
+  }
 
   return (
-    <div className='card' style={cardStyle} onClick={() => handleClickCard({index, card, typeCell})}>
+    <div className='card' style={cardStyle} onClick={() => handleClickCard(dataForSelection)}>
 
       <div className="top">
         {card.designation}

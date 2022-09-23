@@ -1,67 +1,32 @@
 import './style/Cell.css'
-import { CARD_SIZE, SYMBOLES } from '../../globalConstant';
-import Card from '../Card';
-import { useState } from 'react';
-import { defineHeightCellContainer, handleSelectionBoardCell } from './Cell.helpers'
+import { defineHeightCellContainer } from './Cell.helpers'
 import SelectionMarker from './SelectionMarker';
+import { CellMark } from './CellMark';
+import ListCards from './ListCards';
+import { useContext } from 'react';
+import { ShiftingCardsContext } from './../../context/GlobalContext/ShiftingCardsContext';
+
 
 
 const Cell = ({type, cards, indexCell}) => {
 
-  const cellNotEmpty = cards.length > 0
-  const valueWinCell = type === "wincell" && SYMBOLES[indexCell]
+  const { selection } = useContext(ShiftingCardsContext)
+  
+  const isSelected = selection?.cellOrigin.type === type && selection?.cellOrigin.index === indexCell
 
-  const [selection, setSelection] = useState(null)
-
-
-
-  const handleClickCard = (cardSelected) => {
-    if(!selection) {
-      switch (type) {
-        case "wincell":
-          break
-
-        case "bonuscell":
-          setSelection(cardSelected)
-          break
-
-        case "boardcell":
-          setSelection( handleSelectionBoardCell(cardSelected, cards) )
-          break
-
-        default:
-          break
-      }
-
-    } else {
-      // let clickOnSame
-      console.log("distribution");
-    }
-  }
-
+  isSelected && console.log(selection)
 
 
   return (
     <div className="cell-container" style={type === 'boardcell' ? defineHeightCellContainer(cards) : {}}>
 
-        <div className="cell-mark"  style={{width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px`}}>
-          {type === "wincell" && <div className="symbole-mark">{valueWinCell}</div>}
-        </div>
-
+        <CellMark type={type} indexCell={indexCell} />
+        
         <div className={`cards-container`}>
-          {cellNotEmpty && cards.map(
-            (card, index) => 
-              <Card 
-                key={index} 
-                index={index}
-                typeCell={type}
-                card={card}
-                handleClickCard={handleClickCard}
-              />
-            )
-          }
-          {selection && <SelectionMarker selection={selection}/>}
-          
+
+          <ListCards cards={cards} typeCell={type} indexCell={indexCell} />
+          {isSelected && <SelectionMarker selection={selection}/>}
+
         </div>
 
         
