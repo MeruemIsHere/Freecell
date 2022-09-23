@@ -54,7 +54,7 @@ export function handleSelection(cardSelected, deck, setSelection) {
 
         case "bonuscell":
             let newSelection = {
-                cards: [cardSelected],
+                cards: [cardSelected.card],
                 cellOrigin: {
                     type: typeCell,
                     index: indexCell

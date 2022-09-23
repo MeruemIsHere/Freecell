@@ -14,7 +14,7 @@ const Cell = ({type, cards, indexCell}) => {
   
   const isSelected = selection?.cellOrigin.type === type && selection?.cellOrigin.index === indexCell
 
-  isSelected && console.log(selection)
+  // isSelected && console.log(selection)
 
 
   return (

@@ -23,7 +23,9 @@ export const useShiftingCards = (deck) => {
       let clickOnSameCard = (card.value === firstCardSelection.value) && (card.symbole === firstCardSelection.symbole)
       let clickOnSameCell = (typeCell === cellSelectionOrigin.type ) && (indexCell === cellSelectionOrigin.index)
 
-      
+      console.log(selection.cards);
+      console.log(card);
+      console.log(firstCardSelection.value);
 
       if(clickOnSameCard) {
         setSelection(null)
