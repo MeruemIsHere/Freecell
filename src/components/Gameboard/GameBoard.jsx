@@ -1,38 +1,42 @@
-import GlobalContext from '../../context/GlobalContext';
 import Cell from '../Cell'
 import './style/GameBoard.css'
 import { useDeck } from './useGameBoard.hooks';
-import { useShiftingCards } from './../../context/GlobalContext/ShiftingCardsContext/Value';
 
 export const GameBoard = () => {
 
-    const {deck} = useDeck()
+    const { deck, selection, setCardSelected } = useDeck()
     
             
     return (
-        <GlobalContext valueShiftingCards={useShiftingCards(deck)}>
-            <div className="gameboard-container">
+        <div className="gameboard-container">
 
-                <div className="bonuscells-container">
-                    {deck.bonusCells.map((cards, index) => (
-                        <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index}/>
-                    ))}
-                </div>
-
-                <div className="wincells-container">
-                    {deck.winCells.map((cards, index) => (
-                        <Cell key={index} type={'wincell'} cards={cards} indexCell={index}/>
-                    ))}
-                </div>
-
-                <div className="boardcells-container">
-                    {deck.boardCells.map((cards, index) => (
-                        <Cell key={index} type={'boardcell'} cards={cards} indexCell={index}/>
-                    ))}
-                </div>
-
+            <div className="bonuscells-container">
+                {deck.bonusCells.map((cards, index) => {
+                            const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'bonuscell' ? true :  false
+                            return <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index} selection={isSelected ? selection : null} clickCard={setCardSelected}/>
+                        }
+                    )
+                }
             </div>
-        </GlobalContext>
+
+            <div className="wincells-container">
+                {deck.winCells.map((cards, index) => {
+                            return <Cell key={index} type={'wincell'} cards={cards} indexCell={index} clickCard={setCardSelected}/>
+                        }
+                    )
+                }
+            </div>
+
+            <div className="boardcells-container">
+                {deck.boardCells.map((cards, index) => {
+                            const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'boardcell' ? true :  false
+                            return <Cell key={index} type={'boardcell'} cards={cards} indexCell={index}  selection={isSelected ? selection : null} clickCard={setCardSelected}/>
+                        }
+                    )
+                }
+            </div>
+
+        </div>
     )
 }
 

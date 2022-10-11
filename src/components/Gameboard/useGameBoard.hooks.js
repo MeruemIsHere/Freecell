@@ -1,41 +1,46 @@
-import { useState } from 'react';
-import { starterDistribution } from './Gameboard.helpers';
+import { useState, useEffect } from 'react';
+import { STARTER_DECK } from '../../globalConstant';
+import { handleSelection, handleDistribution } from './Gameboard.helpers';
 
-
-// {
-//     designation: 7,
-//     symbole: "♣️",
-//     value: 7
-// }
 
 export function useDeck() {
-    const [deck, setDeck] = useState({
-        bonusCells: [
-            [{
-                designation: 7,
-                symbole: "♣️",
-                value: 7
-            }],
-            [],
-            [],
-            []
-        ],
-        winCells: [
-            [{
-                designation: 7,
-                symbole: "♣️",
-                value: 7
-            }, {
-                designation: 8,
-                symbole: "♣️",
-                value: 8
-            }],
-            [],
-            [],
-            []
-        ],
-        boardCells: starterDistribution()
-    })
+    const [deck, setDeck] = useState(STARTER_DECK)
+    const [cardSelected, setCardSelected] = useState({})
+    const [selection, setSelection] = useState(null)
 
-    return { deck }
+
+    const handleClickCard = () => {
+        const { indexCard, card, typeCell, indexCell } = cardSelected
+
+        if (!selection) {
+            handleSelection(cardSelected, deck, setSelection)
+
+        } else {
+
+            let firstCardSelection = selection.cards[0]
+            let cellSelectionOrigin = selection.cellOrigin
+
+            let clickOnSameCard = (card.value === firstCardSelection.value) && (card.symbole === firstCardSelection.symbole)
+            let clickOnSameCell = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
+
+
+
+            if (clickOnSameCard) {
+                setSelection(null)
+            } else if (clickOnSameCell) {
+                handleSelection(cardSelected, deck, setSelection)
+            } else {
+                handleDistribution()
+
+            }
+        }
+    }
+
+
+    useEffect(() => {
+        handleClickCard()
+    }, [cardSelected])
+
+
+    return { deck, selection, setCardSelected }
 }

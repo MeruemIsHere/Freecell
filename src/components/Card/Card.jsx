@@ -1,14 +1,12 @@
 import './style/card.css'
 import useCard from './useCard.hooks';
-import { ShiftingCardsContext } from './../../context/GlobalContext/ShiftingCardsContext/ShiftingCardsContext';
-import { useContext } from 'react';
+import {  memo } from 'react';
 
 
 
-function Card({index = 0, card, typeCell, indexCell}) {
+const Card = ({index = 0, card, typeCell, indexCell, clickCard}) => {
   
   const { cardStyle } = useCard(typeCell, index, card)
-  const { handleClickCard } = useContext(ShiftingCardsContext)
 
   const dataForSelection = {
     indexCard: index, 
@@ -17,8 +15,10 @@ function Card({index = 0, card, typeCell, indexCell}) {
     indexCell
   }
 
+  console.log("RENDER");
+
   return (
-    <div className='card' style={cardStyle} onClick={() => handleClickCard(dataForSelection)}>
+    <div className='card' style={cardStyle} onClick={() => clickCard(dataForSelection)}>
 
       <div className="top">
         {card.designation}
@@ -39,4 +39,4 @@ function Card({index = 0, card, typeCell, indexCell}) {
   )
 }
 
-export default Card
+export default memo(Card)

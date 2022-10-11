@@ -1,6 +1,7 @@
 import Card from './../Card/Card';
+import { memo } from 'react';
 
-const ListCards = ({cards, typeCell, indexCell}) => {
+const ListCards = ({cards, typeCell, indexCell, clickCard}) => {
     const cellNotEmpty = cards.length > 0
 
     return (
@@ -13,6 +14,7 @@ const ListCards = ({cards, typeCell, indexCell}) => {
                     card={card}
                     typeCell={typeCell}
                     indexCell={indexCell}
+                    clickCard={clickCard}
                     />
                 )
             }
@@ -20,4 +22,4 @@ const ListCards = ({cards, typeCell, indexCell}) => {
     )
 }
 
-export default ListCards
+export default memo(ListCards)
