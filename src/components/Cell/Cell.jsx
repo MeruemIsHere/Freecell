@@ -15,13 +15,10 @@ const Cell = ({type, cards, indexCell, selection, clickCard}) => {
         <CellMark type={type} indexCell={indexCell} />
         
         <div className={`cards-container`}>
-
           <ListCards cards={cards} typeCell={type} indexCell={indexCell} clickCard={clickCard}/>
           {selection && <SelectionMarker selection={selection}/>}
-
         </div>
 
-        
     </div>
   )
 }

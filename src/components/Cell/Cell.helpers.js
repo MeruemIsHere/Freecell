@@ -1,4 +1,4 @@
-import { CARD_SIZE, GAP_CARDS_INTO_BOARDCELL } from './../../globalConstant';
+import { CARD_SIZE, GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
 
 
 export function defineHeightCellContainer(cards) {

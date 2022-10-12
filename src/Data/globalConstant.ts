@@ -1,4 +1,4 @@
-import { starterDistribution } from './utils/utils';
+import { starterDistribution } from '../utils/utils';
 
 
 export const CARD_SIZE = {

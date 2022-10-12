@@ -1,4 +1,4 @@
-import cards from '../Data/cards.json'
+import cards from '../data/cards.json'
 import shuffle from 'lodash.shuffle'
 
 

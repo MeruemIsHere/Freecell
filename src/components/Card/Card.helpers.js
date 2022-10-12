@@ -1,4 +1,4 @@
-import { GAP_CARDS_INTO_BOARDCELL } from './../../globalConstant';
+import { GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
 
 
 export const defineColor = (symbole) => {
