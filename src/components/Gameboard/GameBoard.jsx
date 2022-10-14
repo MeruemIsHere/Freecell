@@ -13,7 +13,7 @@ export const GameBoard = () => {
             <div className="bonuscells-container">
                 {deck.bonusCells.map((cards, index) => {
                             const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'bonuscell' ? true :  false
-                            return <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index} selection={isSelected ? selection : null} clickCard={setCardSelected}/>
+                            return <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index} selection={isSelected ? selection : null} setCardSelected={setCardSelected}/>
                         }
                     )
                 }
@@ -30,7 +30,7 @@ export const GameBoard = () => {
             <div className="boardcells-container">
                 {deck.boardCells.map((cards, index) => {
                             const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'boardcell' ? true :  false
-                            return <Cell key={index} type={'boardcell'} cards={cards} indexCell={index}  selection={isSelected ? selection : null} clickCard={setCardSelected}/>
+                            return <Cell key={index} type={'boardcell'} cards={cards} indexCell={index}  selection={isSelected ? selection : null} setCardSelected={setCardSelected}/>
                         }
                     )
                 }

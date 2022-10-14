@@ -5,23 +5,23 @@ import { handleSelection, handleDistribution } from './Gameboard.helpers';
 
 export function useDeck() {
     const [deck, setDeck] = useState(STARTER_DECK)
-    const [cardSelected, setCardSelected] = useState({})
+    const [cardSelected, setCardSelected] = useState(null)
     const [selection, setSelection] = useState(null)
 
 
     const handleClickCard = () => {
-        const { indexCard, card, typeCell, indexCell } = cardSelected
-
-        if (!cardSelected.card) {
+        if (!cardSelected) {
             setSelection(null)
             return
         }
+
+
+        const { indexCard, card, typeCell, indexCell } = cardSelected
 
         if (!selection) {
             handleSelection(cardSelected, deck, setSelection)
 
         } else {
-
             let cellSelectionOrigin = selection.cellOrigin
             let clickOnSameCell = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
 

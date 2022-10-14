@@ -1,10 +1,11 @@
 import './style/card.css'
 import useCard from './useCard.hooks';
 import {  memo } from 'react';
+import { handleClick } from './Card.helpers';
 
 
 
-const Card = ({index = 0, card, typeCell, indexCell, clickCard}) => {
+const Card = ({index = 0, card, typeCell, indexCell, setCardSelected}) => {
   
   const { cardStyle } = useCard(typeCell, index, card)
 
@@ -15,22 +16,9 @@ const Card = ({index = 0, card, typeCell, indexCell, clickCard}) => {
     indexCell
   }
 
-  const handleClick = (e) => {
-    e.preventDefault()    
-
-    clickCard((prevCard) => {
-      const sameCard = (prevCard?.card?.value === card.value) && (prevCard?.card.symbole === card.symbole) ? true : false
-
-      if(sameCard) {
-        return {}
-      } else {
-        return dataForSelection
-      }
-    })
-  }
 
   return (
-    <div className='card' style={cardStyle} onClick={handleClick}>
+    <div className='card' style={cardStyle} onClick={(e) => handleClick(e, setCardSelected, dataForSelection )}>
 
       <div className="top">
         {card.designation}

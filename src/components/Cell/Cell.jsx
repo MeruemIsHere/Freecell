@@ -7,7 +7,7 @@ import { memo } from 'react';
 
 
 
-const Cell = ({type, cards, indexCell, selection, clickCard}) => {
+const Cell = ({type, cards, indexCell, selection, setCardSelected}) => {
   
   return (
     <div className="cell-container" style={type === 'boardcell' ? defineHeightCellContainer(cards) : {}}>
@@ -15,7 +15,7 @@ const Cell = ({type, cards, indexCell, selection, clickCard}) => {
         <CellMark type={type} indexCell={indexCell} />
         
         <div className={`cards-container`}>
-          <ListCards cards={cards} typeCell={type} indexCell={indexCell} clickCard={clickCard}/>
+          <ListCards cards={cards} typeCell={type} indexCell={indexCell} setCardSelected={setCardSelected}/>
           {selection && <SelectionMarker selection={selection}/>}
         </div>
 

@@ -17,3 +17,18 @@ export const defineTopPos = (index, setCardStyle) => {
         return {...cardStyle, top: topPos }
     })
 }
+
+export const handleClick = (e, setCardSelected, dataForSelection) => {
+    e.preventDefault()
+    const card = dataForSelection.card
+
+    setCardSelected((prevCard) => {
+        const sameCard = (prevCard.card.value === card.value) && (prevCard.card.symbole === card.symbole) ? true : false
+
+        if (sameCard) {
+            return null
+        } else {
+            return dataForSelection
+        }
+    })
+}

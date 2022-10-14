@@ -1,7 +1,7 @@
 import Card from './../Card/Card';
 import { memo } from 'react';
 
-const ListCards = ({cards, typeCell, indexCell, clickCard}) => {
+const ListCards = ({cards, typeCell, indexCell, setCardSelected}) => {
     const cellNotEmpty = cards.length > 0
 
     return (
@@ -14,7 +14,7 @@ const ListCards = ({cards, typeCell, indexCell, clickCard}) => {
                     card={card}
                     typeCell={typeCell}
                     indexCell={indexCell}
-                    clickCard={clickCard}
+                    setCardSelected={setCardSelected}
                     />
                 )
             }

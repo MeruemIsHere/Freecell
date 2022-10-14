@@ -1,6 +1,9 @@
 import { CARD_SIZE, SYMBOLES } from '../../data/globalConstant';
 
+
+
 export const CellMark = ({type, indexCell}) => {
+
     const valueWinCell = type === "wincell" && SYMBOLES[indexCell]
 
     return(
@@ -8,5 +11,5 @@ export const CellMark = ({type, indexCell}) => {
         {type === "wincell" && <div className="symbole-mark">{valueWinCell}</div>}
       </div>
     )
-    
+
   }
