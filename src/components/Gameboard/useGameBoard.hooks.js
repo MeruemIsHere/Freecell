@@ -23,9 +23,9 @@ export function useDeck() {
 
         } else {
             let cellSelectionOrigin = selection.cellOrigin
-            let clickOnSameCell = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
+            let sameCellClicked = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
 
-            if (clickOnSameCell) {
+            if (sameCellClicked) {
                 handleSelection(cardSelected, deck, setSelection)
 
             } else {
