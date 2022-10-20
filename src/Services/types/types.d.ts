@@ -1,10 +1,15 @@
+type cardNumbers = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 
+type cardFigures = "J" | "Q" | "K" | "A" 
+
 export type Card = {
-    designation: number | string,
-    symbole: string,
+    designation: cardNumbers | cardFigures ,
+    symbole: "♥️" | "♦️" | "♠️" | "♣️",
     value?: number
 }
 
 type Cell = Card[]
+
+export type TypeCell = "bonuscell" | "wincell" | "boardcell"
 
 export type Deck = {
     bonusCells: Cell[],
@@ -15,7 +20,7 @@ export type Deck = {
 export type CardClicked = {
     indexCard: number,
     card: Card,
-    typeCell: string,
+    typeCell: TypeCell,
     indexCell: number
 }
 
@@ -46,7 +51,7 @@ export type SetCardStyle = React.Dispatch<React.SetStateAction<CardStyle>>
 
 
 export interface CellProps {
-    type: string,
+    type: TypeCell,
     cards: Card[],
     indexCell: number,
     selection?: Selection | null,
@@ -54,7 +59,7 @@ export interface CellProps {
 }
 
 export interface CellMarkProps {
-    type: string,
+    type: TypeCell,
     indexCell: number
 }
 
@@ -64,7 +69,7 @@ export interface SelectionMarkerProps {
 
 export interface ListCardsProps {
     cards: Card[],
-    typeCell: string,
+    typeCell: TypeCell,
     indexCell: number,
     setCardClicked: SetCardClicked
 }
@@ -72,7 +77,7 @@ export interface ListCardsProps {
 export interface CardProps {
     index: number,
     card: Card,
-    typeCell: string,
+    typeCell: TypeCell,
     indexCell: number,
     setCardClicked: SetCardClicked
 }

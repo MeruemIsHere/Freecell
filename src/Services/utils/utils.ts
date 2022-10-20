@@ -5,7 +5,8 @@ import { Card } from '../types'
 
 
 function shuffleCards() : Card[] {
-    return shuffle(cards)
+    //FIXME: remove forced narrowing 'as Card[]'
+    return shuffle(cards) as Card[]
 }
 
 
@@ -33,8 +34,7 @@ function attributeValues(cards: Card[]): Card[] {
                 break
 
             default:
-                //FIXME: remove forced narrowing "as number"
-                card.value = designation as number
+                card.value = designation
                 break
 
         }
