@@ -9,7 +9,6 @@ function authorizationSelection(cardsSelected: Card[]): boolean {
         let colorCurrCard = (currCard.symbole === "♥️") || (currCard.symbole === "♦️") ? "red" : "black"
 
         let oppositeColor = colorPrevCard !== colorCurrCard
-        //FIXME: configure eslint + prettier for optional chaining
         let valuesIsDecreasing = prevCard.value && currCard.value === (prevCard.value - 1)
 
         authorizations.push((oppositeColor && valuesIsDecreasing) ? true : false)

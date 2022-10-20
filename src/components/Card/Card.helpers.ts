@@ -31,9 +31,7 @@ export const handleCardClick: HandleCardClick = (e, setCardClicked, dataForSelec
     const card = dataForSelection.card
 
     setCardClicked((prevCard) => {
-        //FIXME: Config eslint + prettier for optional chaining
-        let sameCardClicked
-        if (prevCard) sameCardClicked = (prevCard.card.value === card.value) && (prevCard.card.symbole === card.symbole) ? true : false
+        const sameCardClicked = (prevCard?.card.value === card.value) && (prevCard?.card.symbole === card.symbole) ? true : false
 
         if (sameCardClicked) {
             return null

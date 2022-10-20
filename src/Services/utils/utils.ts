@@ -33,7 +33,7 @@ function attributeValues(cards: Card[]): Card[] {
                 break
 
             default:
-                //FIXME: remove narrowing forced "as number"
+                //FIXME: remove forced narrowing "as number"
                 card.value = designation as number
                 break
 
