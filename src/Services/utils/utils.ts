@@ -1,6 +1,6 @@
-import cards from '../data/cards.json'
+import cards from '../../Services/data/cards.json'
 import shuffle from 'lodash.shuffle'
-import { Card } from '../Services/types'
+import { Card } from '../types'
 
 
 

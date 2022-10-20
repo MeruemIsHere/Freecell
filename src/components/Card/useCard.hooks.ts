@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CARD_SIZE } from '../../data/globalConstant';
+import { CARD_SIZE } from '../../Services/constants/globalConstant';
 import { Card, CardStyle } from '../../Services/types';
 import { defineColor, defineTopPos } from './Card.helpers';
 

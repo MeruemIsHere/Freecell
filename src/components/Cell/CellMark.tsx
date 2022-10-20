@@ -1,4 +1,4 @@
-import { CARD_SIZE, SYMBOLES } from '../../data/globalConstant';
+import { CARD_SIZE, SYMBOLES } from '../../Services/constants/globalConstant';
 import { CellMarkProps } from '../../Services/types';
 
 

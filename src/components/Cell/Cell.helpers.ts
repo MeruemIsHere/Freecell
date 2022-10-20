@@ -1,4 +1,4 @@
-import { CARD_SIZE, GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
+import { CARD_SIZE, GAP_CARDS_INTO_BOARDCELL } from '../../Services/constants/globalConstant';
 import { Card } from '../../Services/types';
 
 

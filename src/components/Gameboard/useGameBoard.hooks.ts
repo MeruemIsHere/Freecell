@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { STARTER_DECK } from '../../data/globalConstant';
+import { STARTER_DECK } from '../../Services/constants/globalConstant';
 import { CardClicked, Deck, Selection } from '../../Services/types';
 import { handleSelection, handleDistribution } from './Gameboard.helpers';
 

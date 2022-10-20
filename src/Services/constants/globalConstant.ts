@@ -1,5 +1,5 @@
-import { Deck } from '../Services/types';
-import { starterDistribution } from '../utils/utils';
+import { Deck } from '../types';
+import { starterDistribution } from '../utils';
 
 
 export const CARD_SIZE = {

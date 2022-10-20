@@ -1,4 +1,4 @@
-import { GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
+import { GAP_CARDS_INTO_BOARDCELL } from '../../Services/constants/globalConstant';
 import { CardClicked, SetCardClicked, SetCardStyle } from '../../Services/types';
 
 
@@ -14,9 +14,7 @@ export const defineColor = (symbole: string): string => {
 export const defineTopPos = (index: number, setCardStyle: SetCardStyle): void => {
 
     let topPos = index * GAP_CARDS_INTO_BOARDCELL
-    setCardStyle((cardStyle) => {
-        return {...cardStyle, top: topPos }
-    })
+    setCardStyle((cardStyle) => ({...cardStyle, top: topPos }))
 }
 
 
