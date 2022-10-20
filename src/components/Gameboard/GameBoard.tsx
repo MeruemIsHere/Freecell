@@ -12,25 +12,57 @@ export const GameBoard: React.FC = () => {
 
             <div className="bonuscells-container">
                 {deck.bonusCells.map((cards, index) => {
-                            const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'bonuscell' ? true :  false
-                            return <Cell key={index} type={'bonuscell'} cards={cards} indexCell={index} selection={isSelected ? selection : null} setCardClicked={setCardClicked}/>
+                            const sameIndex = selection?.cellOrigin.index === index
+                            const sameTypeCell = selection?.cellOrigin.type === 'bonuscell'
+
+                            const isSelected = sameIndex && sameTypeCell ? true :  false
+
+                            return <Cell 
+                                    key={index} 
+                                    type={'bonuscell'} 
+                                    cards={cards} 
+                                    indexCell={index} 
+                                    selection={isSelected ? selection : null} 
+                                    setCardClicked={setCardClicked}
+                                    />
                         }
                     )
                 }
             </div>
+
+
 
             <div className="wincells-container">
                 {deck.winCells.map((cards, index) => {
-                            return <Cell key={index} type={'wincell'} cards={cards} indexCell={index} setCardClicked={setCardClicked}/>
+                            return <Cell 
+                                    key={index} 
+                                    type={'wincell'} 
+                                    cards={cards} 
+                                    indexCell={index} 
+                                    setCardClicked={setCardClicked}
+                                    />
                         }
                     )
                 }
             </div>
 
+
+
             <div className="boardcells-container">
                 {deck.boardCells.map((cards, index) => {
-                            const isSelected = (selection?.cellOrigin.index === index) && selection?.cellOrigin.type === 'boardcell' ? true :  false
-                            return <Cell key={index} type={'boardcell'} cards={cards} indexCell={index} selection={isSelected ? selection : null} setCardClicked={setCardClicked}/>
+                            const sameIndex = selection?.cellOrigin.index === index
+                            const sameTypeCell = selection?.cellOrigin.type === 'boardcell'
+                            
+                            const isSelected = sameIndex && sameTypeCell ? true :  false
+
+                            return <Cell 
+                                    key={index} 
+                                    type={'boardcell'} 
+                                    cards={cards} 
+                                    indexCell={index} 
+                                    selection={isSelected ? selection : null} 
+                                    setCardClicked={setCardClicked}
+                                    />
                         }
                     )
                 }
