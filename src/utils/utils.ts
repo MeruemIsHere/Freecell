@@ -1,15 +1,17 @@
 import cards from '../data/cards.json'
 import shuffle from 'lodash.shuffle'
+import { Card } from '../Services/types'
 
 
-function shuffleCards() {
+
+function shuffleCards() : Card[] {
     return shuffle(cards)
 }
 
 
-function attributeValues(cards) {
+function attributeValues(cards: Card[]): Card[] {
 
-    cards.forEach(card => {
+    cards.forEach((card: Card) : void => {
         const { designation } = card
 
         switch (designation) {
@@ -31,7 +33,8 @@ function attributeValues(cards) {
                 break
 
             default:
-                card.value = designation
+                //FIXME: remove narrowing forced "as number"
+                card.value = designation as number
                 break
 
         }
@@ -42,12 +45,13 @@ function attributeValues(cards) {
 
 
 
-export function starterDistribution() {
+export function starterDistribution(): Card[][] {
+    const numberOfBoardCells = 8
     let cardsShuffled = attributeValues(shuffleCards())
 
     let starterDeck = []
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < numberOfBoardCells; i++) {
         if (i <= 3) {
             starterDeck[i] = cardsShuffled.splice(0, 7)
         } else {

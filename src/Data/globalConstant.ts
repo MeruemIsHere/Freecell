@@ -1,3 +1,4 @@
+import { Deck } from '../Services/types';
 import { starterDistribution } from '../utils/utils';
 
 
@@ -10,10 +11,7 @@ export const SYMBOLES = ["♥️", "♦️", "♠️", "♣️"]
 
 export const GAP_CARDS_INTO_BOARDCELL = 30
 
-
-
-
-export const STARTER_DECK = {
+export const STARTER_DECK: Deck = {
     bonusCells: [
         [{
             designation: 7,

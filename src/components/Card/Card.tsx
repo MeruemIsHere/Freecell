@@ -1,11 +1,12 @@
 import './style/card.css'
 import useCard from './useCard.hooks';
 import {  memo } from 'react';
-import { handleClick } from './Card.helpers';
+import { handleCardClick } from './Card.helpers';
+import { CardProps } from '../../Services/types';
 
 
 
-const Card = ({index = 0, card, typeCell, indexCell, setCardSelected}) => {
+const Card: React.FC<CardProps> = ({index = 0, card, typeCell, indexCell, setCardClicked}) => {
   
   const { cardStyle } = useCard(typeCell, index, card)
 
@@ -18,7 +19,7 @@ const Card = ({index = 0, card, typeCell, indexCell, setCardSelected}) => {
 
 
   return (
-    <div className='card' style={cardStyle} onClick={(e) => handleClick(e, setCardSelected, dataForSelection )}>
+    <div className='card' style={cardStyle} onClick={(e) => handleCardClick(e, setCardClicked, dataForSelection )}>
 
       <div className="top">
         {card.designation}

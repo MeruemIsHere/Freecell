@@ -1,7 +1,8 @@
 import React from 'react'
 import { CARD_SIZE, GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
+import { SelectionMarkerProps } from '../../Services/types';
 
-const SelectionMarker = ({selection}) => {
+const SelectionMarker: React.FC<SelectionMarkerProps> = ({selection}) => {
     const selectionHeight = CARD_SIZE.height + ((selection.cards.length - 1) * GAP_CARDS_INTO_BOARDCELL)
 
     return (

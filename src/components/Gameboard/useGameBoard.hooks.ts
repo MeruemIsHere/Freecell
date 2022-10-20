@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react';
 import { STARTER_DECK } from '../../data/globalConstant';
+import { CardClicked, Deck, Selection } from '../../Services/types';
 import { handleSelection, handleDistribution } from './Gameboard.helpers';
 
 
+
 export function useDeck() {
-    const [deck, setDeck] = useState(STARTER_DECK)
-    const [cardSelected, setCardSelected] = useState(null)
-    const [selection, setSelection] = useState(null)
+    const [deck, setDeck] = useState<Deck>(STARTER_DECK)
+    const [cardClicked, setCardClicked] = useState<CardClicked | null>(null)
+    const [selection, setSelection] = useState<Selection | null>(null)
 
 
     const handleClickCard = () => {
-        if (!cardSelected) {
+        if (!cardClicked) {
             setSelection(null)
             return
         }
 
 
-        const { indexCard, card, typeCell, indexCell } = cardSelected
+        const { indexCard, card, typeCell, indexCell } = cardClicked
 
         if (!selection) {
-            handleSelection(cardSelected, deck, setSelection)
+            handleSelection(cardClicked, deck, setSelection)
 
         } else {
             let cellSelectionOrigin = selection.cellOrigin
             let sameCellClicked = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
 
             if (sameCellClicked) {
-                handleSelection(cardSelected, deck, setSelection)
+                handleSelection(cardClicked, deck, setSelection)
 
             } else {
                 handleDistribution()
@@ -38,8 +40,8 @@ export function useDeck() {
 
     useEffect(() => {
         handleClickCard()
-    }, [cardSelected])
+    }, [cardClicked])
 
 
-    return { deck, selection, setCardSelected }
+    return { deck, selection, setCardClicked }
 }

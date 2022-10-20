@@ -1,7 +1,8 @@
 import { GAP_CARDS_INTO_BOARDCELL } from '../../data/globalConstant';
+import { CardClicked, SetCardClicked, SetCardStyle } from '../../Services/types';
 
 
-export const defineColor = (symbole) => {
+export const defineColor = (symbole: string): string => {
     if ((symbole === "♥️") || (symbole === "♦️")) {
         return 'red'
     } else {
@@ -10,20 +11,29 @@ export const defineColor = (symbole) => {
 }
 
 
-export const defineTopPos = (index, setCardStyle) => {
+export const defineTopPos = (index: number, setCardStyle: SetCardStyle): void => {
 
     let topPos = index * GAP_CARDS_INTO_BOARDCELL
-    setCardStyle(cardStyle => {
+    setCardStyle((cardStyle) => {
         return {...cardStyle, top: topPos }
     })
 }
 
-export const handleClick = (e, setCardSelected, dataForSelection) => {
+
+
+
+type HandleCardClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>, 
+    setCardClicked: SetCardClicked, 
+    dataForSelection: CardClicked
+) => void
+
+export const handleCardClick: HandleCardClick = (e, setCardClicked, dataForSelection) => {
     e.preventDefault()
     const card = dataForSelection.card
 
-    setCardSelected((prevCard) => {
-        //TODO: Config eslint + prettier for optional chaining
+    setCardClicked((prevCard) => {
+        //FIXME: Config eslint + prettier for optional chaining
         let sameCardClicked
         if (prevCard) sameCardClicked = (prevCard.card.value === card.value) && (prevCard.card.symbole === card.symbole) ? true : false
 

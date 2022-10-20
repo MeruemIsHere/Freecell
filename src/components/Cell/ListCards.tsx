@@ -1,7 +1,8 @@
-import Card from './../Card/Card';
+import Card from '../Card/Card';
 import { memo } from 'react';
+import { ListCardsProps } from '../../Services/types';
 
-const ListCards = ({cards, typeCell, indexCell, setCardSelected}) => {
+const ListCards: React.FC<ListCardsProps> = ({cards, typeCell, indexCell, setCardClicked}) => {
     const cellNotEmpty = cards.length > 0
 
     return (
@@ -14,7 +15,7 @@ const ListCards = ({cards, typeCell, indexCell, setCardSelected}) => {
                     card={card}
                     typeCell={typeCell}
                     indexCell={indexCell}
-                    setCardSelected={setCardSelected}
+                    setCardClicked={setCardClicked}
                     />
                 )
             }

@@ -1,12 +1,16 @@
-function authorizationSelection(cardsSelected) {
-    let authorizations = []
+import { Card, CardClicked, Deck, Selection, SetSelection } from "../../Services/types"
+
+
+function authorizationSelection(cardsSelected: Card[]): boolean {
+    let authorizations: boolean[] = []
 
     cardsSelected.reduce((prevCard, currCard) => {
         let colorPrevCard = (prevCard.symbole === "♥️") || (prevCard.symbole === "♦️") ? "red" : "black"
         let colorCurrCard = (currCard.symbole === "♥️") || (currCard.symbole === "♦️") ? "red" : "black"
 
         let oppositeColor = colorPrevCard !== colorCurrCard
-        let valuesIsDecreasing = currCard.value === (prevCard.value - 1)
+        //FIXME: configure eslint + prettier for optional chaining
+        let valuesIsDecreasing = prevCard.value && currCard.value === (prevCard.value - 1)
 
         authorizations.push((oppositeColor && valuesIsDecreasing) ? true : false)
 
@@ -20,8 +24,8 @@ function authorizationSelection(cardsSelected) {
 
 
 
-function handleSelectionBoardCell(cardSelected, cards) {
-    const { indexCard, card, typeCell, indexCell } = cardSelected
+function handleSelectionBoardCell(cardClicked: CardClicked, cards: Card[]): Selection | null {
+    const { indexCard, card, typeCell, indexCell } = cardClicked
 
     let copyCellCards = [...cards]
     let nbCardsSelected = cards.length - indexCard
@@ -45,8 +49,8 @@ function handleSelectionBoardCell(cardSelected, cards) {
 
 
 
-export function handleSelection(cardSelected, deck, setSelection) {
-    const { indexCard, card, typeCell, indexCell } = cardSelected
+export function handleSelection(cardClicked: CardClicked, deck: Deck, setSelection: SetSelection): void {
+    const { indexCard, card, typeCell, indexCell } = cardClicked
 
     switch (typeCell) {
         case "wincell":
@@ -54,7 +58,7 @@ export function handleSelection(cardSelected, deck, setSelection) {
 
         case "bonuscell":
             let newSelection = {
-                cards: [cardSelected.card],
+                cards: [cardClicked.card],
                 cellOrigin: {
                     type: typeCell,
                     index: indexCell
@@ -64,7 +68,7 @@ export function handleSelection(cardSelected, deck, setSelection) {
             break
 
         case "boardcell":
-            setSelection(handleSelectionBoardCell(cardSelected, deck.boardCells[indexCell]))
+            setSelection(handleSelectionBoardCell(cardClicked, deck.boardCells[indexCell]))
             break
 
         default:
