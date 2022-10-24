@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { STARTER_DECK } from '../../Services/constants/globalConstant';
 import { CardClicked, Deck, Selection } from '../../Services/types';
-import { handleSelection, handleDistribution } from './Gameboard.helpers';
+import { handleSelection, handleDistribution } from './helpers';
 
 
 
 export function useDeck() {
+    console.log();
+    
     const [deck, setDeck] = useState<Deck>(STARTER_DECK)
     const [cardClicked, setCardClicked] = useState<CardClicked | null>(null)
     const [selection, setSelection] = useState<Selection | null>(null)

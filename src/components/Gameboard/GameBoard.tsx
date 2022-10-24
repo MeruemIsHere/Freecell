@@ -2,7 +2,7 @@ import Cell from '../Cell'
 import './style/GameBoard.css'
 import { useDeck } from './useGameBoard.hooks';
 
-export const GameBoard: React.FC = () => {
+const GameBoard: React.FC = () => {
 
     const { deck, selection, setCardClicked } = useDeck()
     

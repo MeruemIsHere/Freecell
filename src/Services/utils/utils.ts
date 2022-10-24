@@ -10,7 +10,7 @@ function shuffleCards() : Card[] {
 }
 
 
-function attributeValues(cards: Card[]): Card[] {
+export function attributeValues(cards: Card[]): Card[] {
 
     cards.forEach((card: Card) : void => {
         const { designation } = card

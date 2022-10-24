@@ -27,7 +27,7 @@ export type CardClicked = {
 export type Selection = {
     cards: Card[],
     cellOrigin: {
-        type: string,
+        type: TypeCell,
         index: number
     }
 }
