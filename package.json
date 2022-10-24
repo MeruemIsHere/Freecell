@@ -21,7 +21,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "vitest": "vitest"
     },
     "eslintConfig": {
         "extends": [
@@ -42,6 +43,7 @@
         ]
     },
     "devDependencies": {
-        "@types/lodash.shuffle": "^4.2.7"
+        "@types/lodash.shuffle": "^4.2.7",
+        "vitest": "^0.24.3"
     }
 }
