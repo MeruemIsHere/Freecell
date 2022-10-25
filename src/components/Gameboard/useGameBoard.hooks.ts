@@ -18,8 +18,7 @@ export function useDeck() {
             setSelection(null)
             return
         }
-
-
+        
         const { indexCard, card, typeCell, indexCell } = cardClicked
 
         if (!selection) {

@@ -15,7 +15,7 @@ describe('attributeValues()', () => {
         }
     )
     
-    it<CardCxt>('should attribute value 1 for As', ({card, cardExpect}) => {
+    it<CardCxt>('attributes value 1 for As', ({card, cardExpect}) => {
         cardExpect.value = 1
 
         const result = attributeValues([card])
@@ -23,7 +23,7 @@ describe('attributeValues()', () => {
     })
 
 
-    it<CardCxt>('should attribute value 13 for King', ({card, cardExpect}) => {
+    it<CardCxt>('attributes value 13 for King', ({card, cardExpect}) => {
         card.designation = 'K'
         cardExpect.designation = 'K'
         cardExpect.value = 13
@@ -33,7 +33,7 @@ describe('attributeValues()', () => {
     })
 
 
-    it<CardCxt>('should attribute value 12 for Queen', ({card, cardExpect}) => {
+    it<CardCxt>('attributes value 12 for Queen', ({card, cardExpect}) => {
         card.designation = 'Q'
         cardExpect.designation = 'Q'
         cardExpect.value = 12
@@ -43,7 +43,7 @@ describe('attributeValues()', () => {
     })
 
 
-    it<CardCxt>('should attribute value 11 for Jack', ({card, cardExpect}) => {
+    it<CardCxt>('attributes value 11 for Jack', ({card, cardExpect}) => {
         card.designation = 'J'
         cardExpect.designation = 'J'
         cardExpect.value = 11
@@ -53,7 +53,7 @@ describe('attributeValues()', () => {
     })
 
 
-    it<CardCxt>('should attribute value same number than designation', ({card, cardExpect}) => {
+    it<CardCxt>('attributes value same number than designation', ({card, cardExpect}) => {
         card.designation = 5
         cardExpect.designation = 5
         cardExpect.value = 5

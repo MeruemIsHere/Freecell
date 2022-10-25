@@ -3,16 +3,11 @@ import authorizationSelection from './authorizationSelection';
 
 export default function handleSelectionBoardCell(cardClicked: CardClicked, cards: Card[]): Selection | null {
     const { indexCard, card, typeCell, indexCell } = cardClicked
-    
-    if(!cards.length) return null
 
-    let copyCellCards = [...cards]
     let nbCardsSelected = cards.length - indexCard
+    let cardsSelected = [...cards].splice(indexCard, nbCardsSelected)
 
-    //FIXME: Replace copyCellCards by [...cards]
-    let cardsSelected = copyCellCards.splice(indexCard, nbCardsSelected)
-
-    let newSelection = {
+    let newSelection: Selection = {
         cards: cardsSelected,
         cellOrigin: {
             type: typeCell,

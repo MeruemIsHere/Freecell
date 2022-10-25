@@ -3,13 +3,14 @@ import handleSelectionBoardCell from "./handleSelectionBoardCell"
 
 export default function handleSelection(cardClicked: CardClicked, deck: Deck, setSelection: SetSelection): void {
     const { indexCard, card, typeCell, indexCell } = cardClicked
+    let newSelection
 
     switch (typeCell) {
         case "wincell":
             break
 
         case "bonuscell":
-            let newSelection = {
+            newSelection = {
                 cards: [cardClicked.card],
                 cellOrigin: {
                     type: typeCell,
@@ -20,7 +21,8 @@ export default function handleSelection(cardClicked: CardClicked, deck: Deck, se
             break
 
         case "boardcell":
-            setSelection(handleSelectionBoardCell(cardClicked, deck.boardCells[indexCell]))
+            newSelection = handleSelectionBoardCell(cardClicked, deck.boardCells[indexCell])
+            setSelection(newSelection)
             break
 
         default:
