@@ -50,6 +50,7 @@ export type SetCardStyle = React.Dispatch<React.SetStateAction<CardStyle>>
 
 
 
+
 export interface CellProps {
     type: TypeCell,
     cards: Card[],

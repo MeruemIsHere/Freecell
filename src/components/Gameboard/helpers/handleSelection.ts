@@ -4,7 +4,7 @@ import handleSelectionBoardCell from "./handleSelectionBoardCell"
 export default function handleSelection(cardClicked: CardClicked, deck: Deck, setSelection: SetSelection): void {
     const { indexCard, card, typeCell, indexCell } = cardClicked
     let newSelection
-
+    
     switch (typeCell) {
         case "wincell":
             break
@@ -18,6 +18,7 @@ export default function handleSelection(cardClicked: CardClicked, deck: Deck, se
                 }
             }
             setSelection(newSelection)
+            
             break
 
         case "boardcell":
