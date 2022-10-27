@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest"
 import { CardClicked, Deck } from "../../../Services/types"
 import { cardClickedMock, deckMock } from "../../../__tests__/mocks"
-import { handleSelection } from "../helpers";
+import handleSelection from "../helpers/handleSelection";
 import handleSelectionBoardCell from './../helpers/handleSelectionBoardCell';
 
 interface Context {
