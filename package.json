@@ -19,7 +19,7 @@
     "scripts": {
         "start": "vite",
         "build": "vite build",
-        "vitest": "vitest",
+        "vitest": "vitest --reporter verbose",
         "coverage": "vitest --coverage"
     },
     "eslintConfig": {
