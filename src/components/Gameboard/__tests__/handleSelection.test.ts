@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { CardClicked, Deck } from "../../../Services/types"
 import { cardClickedMock, deckMock } from "../../../__tests__/mocks"
 import handleSelection from "../helpers/handleSelection";
@@ -13,16 +13,8 @@ describe('handleSelection()', () => {
 
     const deck: Deck = deckMock
     const setSelectionMock = vi.fn()
+    vi.mock('../helpers/handleSelectionBoardCell')
 
-
-    beforeAll(() => {
-        vi.mock('../helpers/handleSelectionBoardCell')
-    })
-
-    afterAll(() => {
-        //FIXME: Find a way to replace the line below by vi.restoreAllMocks()
-        handleSelectionBoardCell.mockRestore()
-    })
 
 
     beforeEach<Context>(ctx => {
@@ -54,7 +46,7 @@ describe('handleSelection()', () => {
         expect(setSelectionMock).toHaveBeenCalled()
     })
 
-    it<Context>('set selection and handle selection for boardCell if typeCell equal "boardcell', ({cardClicked}) => {
+    it<Context>('handle selection for boardCell and set selection if typeCell equal "boardcell', ({cardClicked}) => {
         cardClicked.indexCard = 0
         handleSelection(cardClicked, deck, setSelectionMock)
         

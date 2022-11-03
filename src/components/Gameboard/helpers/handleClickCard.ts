@@ -1,6 +1,7 @@
 import { CardClicked, Deck, Selection, SetSelection } from "../../../Services/types"
 import handleDistribution from "./handleDistribution"
 import handleSelection from "./handleSelection"
+import { checkIfSameBoardCellIsClicked } from './checkIfSameBoardCellIsClicked';
 
 
 export type HandleClickCardParams = {
@@ -19,10 +20,9 @@ export default function handleClickCard(params: HandleClickCardParams) {
         handleSelection(cardClicked, deck, setSelection)
 
     } else {
-        let cellSelectionOrigin = selection.cellOrigin
-        let sameCellClicked = (typeCell === cellSelectionOrigin.type) && (indexCell === cellSelectionOrigin.index)
+        const isSameBoardCellThanSelection = checkIfSameBoardCellIsClicked(selection.cellOrigin, cardClicked)
 
-        if (sameCellClicked) {
+        if (isSameBoardCellThanSelection) {
             handleSelection(cardClicked, deck, setSelection)
 
         } else {

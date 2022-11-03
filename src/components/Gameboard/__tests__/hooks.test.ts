@@ -1,59 +1,33 @@
-import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { act } from '@testing-library/react';
 import { useDeck } from "../useGameBoard.hooks";
-import { CardClicked, Selection } from "../../../Services/types";
+import { CardClicked } from "../../../Services/types";
 import handleClickCard from './../helpers/handleClickCard';
 import { resetHook } from "../../../__tests__/helpers";
+import { cardClickedMock } from "../../../__tests__/mocks";
 
 /**
 * @vitest-environment jsdom
 */
 
+interface Context {
+    cardClicked: CardClicked
+}
+
 describe('useDeck', () => {
 
     const setup = () => resetHook(useDeck)
+    
+    vi.mock('../helpers/handleClickCard')
 
-    const selectionTemplate: Selection = {
-        cards: [
-            {
-                designation: 10,
-                symbole: '♦️',
-                value: 10
-            }
-        ],
-        cellOrigin: {
-            type: "boardcell",
-            index: 3
-        }
-    }
-
-    const cardClickedTemplate: CardClicked = {
-        indexCard: 5,
-        card: {
-            designation: "J",
-            symbole: "♣️",
-            value: 11
-        },
-        typeCell: "boardcell",
-        indexCell: 3
-    } 
-
-    beforeAll(() => {
-        vi.mock('../helpers/handleClickCard')
-    })
-
-    afterEach(() => {
-        handleClickCard.mockClear()
-    })
-
-    afterAll(() => {
-        handleClickCard.restore()
+    beforeEach<Context>(cxt => {
+        vi.restoreAllMocks()
+        cxt.cardClicked = structuredClone(cardClickedMock)
     })
 
 
 
-
-    it('call setSelection(null) when cardClicked return to null', async () => {
+    it<Context>('call setSelection(null) when cardClicked return to null', ({cardClicked}) => {
 
         // at launch
         const result = setup()
@@ -64,11 +38,9 @@ describe('useDeck', () => {
 
 
         // at selection
-        const cardClickedMock = {...cardClickedTemplate}
-        
-        act(() => result.current.setCardClicked(cardClickedMock))
+        act(() => result.current.setCardClicked(cardClicked))
         // handleClickCard is normally called here but it will be tested at the next test
-        // and it's optional since it can either setSelection(newSelection) or setSelection(null)
+        // and it's optional here since it can either setSelection(newSelection) or setSelection(null)
         expect(result.current.cardClicked).not.toBe(null)
         
 
@@ -81,11 +53,10 @@ describe('useDeck', () => {
         
     })
 
-    it('call handleCardClicked() when card is clicked', () => {
+    it<Context>('call handleCardClicked() when card is clicked', ({cardClicked}) => {
         const result = setup()
-        const cardClickedMock = {...cardClickedTemplate}
         
-        act(() => result.current.setCardClicked(cardClickedMock))
+        act(() => result.current.setCardClicked(cardClicked))
         
         expect(handleClickCard).toHaveBeenCalledOnce()
         

@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { CardClicked, Deck, Selection, SetSelection } from "../../../Services/types"
 import { cardClickedMock, deckMock, selectionBoardMock } from "../../../__tests__/mocks";
 import handleClickCard from "../helpers/handleClickCard";
@@ -33,6 +33,8 @@ describe('handleClickCard', () => {
         vi.restoreAllMocks()
     })
 
+
+
     describe('if no card is already selected', () => {
 
 
@@ -41,7 +43,7 @@ describe('handleClickCard', () => {
         })
         
 
-        it<Context>('handle selection', ({params}) => {
+        it<Context>('should handle selection', ({params}) => {
             params.selection = null
             handleClickCard(params)
             
@@ -55,6 +57,7 @@ describe('handleClickCard', () => {
         beforeEach<Context>((cxt) => {
             cxt.params = {...initialParams}
         })
+
 
         it<Context>('handle selection if cell clicked is the same as the previous selection', ({params}) => {
             handleClickCard(params)
